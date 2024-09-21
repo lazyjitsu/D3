@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emails>
+    <message>
+        <from>Jani@hot.com</from>
+        <to>Tove@hot.com</to>
+        <body> this is the content</body>
+        <markobody> this is the content</markobody>
+        <date>02/01/2008</date>
+        <example><exampleChild>The below line is a shortcut which omitts the opening tag is the same as this if no data </exampleChild></example>
+        <example></exampleChild></example>
+    </message>
+</emails>

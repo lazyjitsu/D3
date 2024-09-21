@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title> Async JavaScript </title>
+    <script src = "https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
+  <body>
+    <p>Async trying to RUNN what Markos wants!</p>
+    <!-- Scripts -->
+   <script src = "protoTypes.js"></script>
+   <script>
+   let x = 3;
+   var tt = x => x + 5;
+      document.write("X is " + tt(4));
+   </script>
+   <script>
+
+   var ray = (function() {
+        var DEFAULTS = {
+                say: "SEM",
+                speed: "Andalee!!"
+        }
+
+        return {
+                speak: function() {
+                        var myArgs = arguments[0] || '';
+                        var statement = myArgs.say || DEFAULTS.say;
+                        console.log(statement);
+                },
+                run: function() {
+                        var myArgs = arguments[0] || '';
+                        var statement = myArgs.say || DEFAULTS.speed;
+                        console.log('running...'+running);
+                }
+        };
+})();
+
+var x = ray;
+
+x.speak({ say: 'howdy'});
+x.speak();
+
+   </script>
+  </body>
+</html>

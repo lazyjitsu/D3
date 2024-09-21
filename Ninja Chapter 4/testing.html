@@ -1,0 +1,31 @@
+<html>
+<head>
+<title> Testing </title>
+</head>
+<body>
+<button id="test">Click freaken Me!</button>
+<script>
+var x;
+function Button() {
+//  var that = this;
+  this.clicked = false;
+//  this.click = function() {
+  this.click = () => {
+  this.clicked = true;
+    if (this.clicked)
+    {
+
+      alert("this.click was checked: "+this.clicked);
+      alert("button.click test"+button.clicked);
+  //    alert("hiiii");
+      //alert("button.click was checked: "+that.clicked);
+    }
+  };
+}
+var button = new Button();
+var elem = document.getElementById("test");
+elem.addEventListener("click",button.click);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>D3 in action again</title>
+    <script src="d3.js"></script>
+</head>
+<body>
+    <script>
+        const height = 900
+        const width = 1400
+        const svg = d3.select('body').append('svg');
+                        svg.attr('height', height)
+                        svg.attr('width', width);
+        const scalePositive = (item) => {
+     
+            if (item.x < 0) {
+                item.x *= -1
+                console.log('item recX' + item.x)
+                return item.x
+            }
+            else if (item.y < 0) {
+                item.y *= -1
+                console.log('item recY' + item.y)
+                return item.y
+            }
+            item.x ? console.log('X ' + item.x) : console.log('Y ', item.y)
+            return item.x ? item.x:item.y
+        }
+        let xScale,yScale = 0
+        const defineScales = (scaleData) => {
+            xScale = d3.scaleLinear()
+                .domain([0, d3.max(scaleData, d => scalePositive(d))])
+                .range([0, width])
+
+            yScale = d3.scaleLinear()
+                .domain([0, d3.max(scaleData, d => scalePositive(d))])
+                .range([0, height])
+            console.log('Yscale domain begin')
+            console.log(yScale.domain())
+            console.log('Yscale domain end')
+        }
+        const createCircles = (circleData) => {
+    
+            svg.selectAll("circle")
+                   .data(circleData)
+                   .enter()
+                .append('circle')
+                .attr("cx", (d) => xScale(d.x))
+                .attr("cy", (d) => scalePositive(d))
+                     .attr("r", (r) => Math.sqrt(r.x**2))
+                     .style("fill", "red");
+        }
+        const createText = (textData) => {
+          //console.log(textData)
+     
+         const circleG = svg.selectAll('g')
+                .data(textData)
+                .enter()
+                .append("g")
+               .attr("transform", (d) => "translate(" + xScale(d.x) + "," + yScale(scalePositive(d.y))  + ")")
+
+            circleG.append("text")
+                .attr("dx", d => xScale(d.x))
+                .attr("dy", d => scalePositive(d))
+                .text(d => d.label)
+        }
+        d3.csv("cities.csv")
+            .then(d => {
+                d.forEach(data => {
+                    console.log(data)
+                });
+                defineScales(d)
+                createCircles(d)
+                createText(d)
+
+            });
+      
+
+    </script>
+</body>
+</html>

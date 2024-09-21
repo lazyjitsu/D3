@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+    <title>Selection Function Chain</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script type="text/javascript" src="d3.js"></script>
+</head>
+
+<body>
+<!-- Note there is no HTML on this page done entirely with javascript function-chaining! -->
+<script type="text/javascript">
+    var body = d3.select("body"); // <-- A
+    body.append("section") // <-- B
+            .attr("id", "section1") // <-- C
+          .append("div") // <-- D
+              .attr("class", "blue box") // <-- E
+          .append("p") // <-- F
+              .text("dynamic blue box"); // <-- G
+    body.append("section")
+            .attr("id", "section2")
+          .append("div")
+              .attr("class", "red box")
+          .append("p")
+              .text("dynamic red box");
+</script>
+
+</body>
+</html>
+<!--
+High this video is about function changing.
+Previously we looked at performing sub selection in this video.
+We will take a look at how the entire body structure of the code could be constructed using D-3 alone.
+D-3 API is completely designed around the idea of function chaining.
+Therefore it forms a DSL for building HCM.
+SVGA elements dynamically if DSL is a new concept for you I highly recommend checking out this excellent
+explanation on dsl by Martin Fowler from his book domain specific languages which can be found at this
+link.
+Open your local copy of the file in your web browser.
+Take a look at how a function change can be used to produce concise and readable code that produces
+dynamic visual content
+this code generates the visual output similar to what we saw in the previous section despite the visual
+similarity to the previous example.
+The construction process of the DOMA elements is significantly different in this example as demonstrated
+by the code example.
+There is no static HCM l element on the page.
+Contrary to the previous video where both the section and DV elements existed let's examine closely
+how these elements were dynamically created online.
+A a general selection was made to the top level body element the body selection result was cached using
+a local variable called body then at line b a new element S. was appended to the body.
+Remember that the append function returns a new selection that contains the newly appended element.
+Therefore online see the id attribute can then be set on a newly created section element to Section
+1 afterward On-Line D.
+A new DV element was created and appended to hash.
+Section 1 with its CSSA class set to blue box on line e..
+For the next step similar to the previous line on line f a paragraph element was appended to the DV
+element with its textual content set to dynamic blue box On-Line g as illustrated by this example.
+This chaining process can continue to create any structure of arbitrary complexity.
+In fact this is how a typical D-3 based data visualisation structure is created.
+Many visualization projects simply contain only an HVM skeleton and rely on D-3 to create the rest.
+Getting comfortable with this way of function chaining is critical.
+If you want to become efficient with the D-3 library cool.
+That's all for now.
+In this video we've looked at function chaining.
+Next up will see manipulating the raw selection. -->

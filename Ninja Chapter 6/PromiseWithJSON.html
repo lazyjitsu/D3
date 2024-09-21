@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  #results li.pass {color: green;}
+  #results li.fail { color: red; }
+  #results li.theCause { color: brown; }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 6 Promises</title>
+</head>
+<body>
+  <div id="results"></div>
+<script>
+//(resolve,reject) => blabhablh is an "executor" function
+function getJSON(url) {
+  return new Promise((resolve,reject) => {
+  const request = new XMLHttpRequest();
+  request.open("GET",url);
+  request.onload = function() {
+    try {
+      if (this.status === 200) {
+        resolve(JSON.parse(this.response));
+      } else {
+        reject(this.status + " " + this.statusText);
+      }
+    } catch(e) {
+      reject(e.message);
+    }
+  };
+  request.onerror = function() {
+    reject(this.status + " " + this.statusText);
+  };
+      request.send();
+    });
+  }
+  getJSON("http://graphmach:3000/MarkoJSONdata.json").then(ninjas => {
+    assert(ninjas !== null, "Ninjas obtained brother!!");
+  }).catch(e => assert(true,"Shouldntt bee here man!!: " + e));
+
+function assert(value,desc) {
+  var li = document.createElement("li");
+  li.className = value ? "pass" : "fail";
+  li.appendChild(document.createTextNode(desc));
+  document.getElementById("results").appendChild(li);
+}
+function report(desc) {
+    var li = document.createElement("li");
+    li.className = "theCause";
+    li.appendChild(document.createTextNode(desc));
+    document.getElementById("results").appendChild(li);
+}
+</script>
+</body>
+</html>

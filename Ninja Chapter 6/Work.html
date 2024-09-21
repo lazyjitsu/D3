@@ -1,0 +1,26 @@
+<html>
+<head><title>Chapter 6 Generators and Promises</title> </head>
+<body>
+  <script>
+  function* WeaponGenerator() {
+    yield "katana";
+    yield "nunchucks";
+    yield "kusarigama";
+  }
+  for (let weapon of WeaponGenerator())
+  {
+    if (weapon !== undefined)
+    {
+      alert(weapon);
+    }
+  }
+  const weaponsIterator = WeaponGenerator();
+  const result1 = weaponsIterator.next();
+  if (typeof result1 === "object" && result1.value === "katana" && !result1.done)
+  {
+    alert("testing our weaponsIterator.next() function");
+  }
+  </script>
+</body>
+
+</html>

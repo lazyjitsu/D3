@@ -1,0 +1,40 @@
+<html>
+<head>
+<title> testt </title>
+</head>
+<body>
+<script>
+var materials = [
+  'bjj',
+  'kung fu',
+  'muay thai',
+  'marco'
+];
+var m1 = materials.map(function(material) {
+  return material.length;
+});
+var m2 = materials.map((material) => {
+  return material.length;
+});
+
+var m3 = materials.map(material => material.length);
+alert(m3);
+//also lets demonstrate, besides the simplification see above from
+//most lengthy code to to the last simplified/arrow code w/an implicit return statement
+//below is how fat arrow remembers the 'this' object
+function Person() {
+
+  this.age = 0;
+  setInterval(() => {
+//In a normal function, 'this' would apply to the 'global' this
+//but using fat arrows, it applies to the 'Person' object
+    this.age++;
+  },1000);
+}
+var p1 = new Person();
+
+document.writeln(p1);
+
+</script>
+</body>
+</html>

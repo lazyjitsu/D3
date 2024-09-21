@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  #results li.pass {color: green;}
+  #results li.fail { color: red; }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 6 Generators</title>
+</head>
+<body>
+  <div id="results"></div>
+<script>
+
+function* ninjaGenerator(action) {
+  try {
+    yield("Ujio");
+    fail("This is a failure schmuck!");
+  }
+  catch(e) {
+    assert(e === "Hit me Dog","Atomic Dog!!")
+  }
+}
+
+const myIterator = ninjaGenerator();
+var result1 = myIterator.next();
+console.log(result1);
+var result2 = myIterator.throw("Hit me Dog");
+
+
+    function assert(value,desc) {
+      var li = document.createElement("li");
+      li.className = value ? "pass" : "fail";
+      li.appendChild(document.createTextNode(desc));
+      document.getElementById("results").appendChild(li);
+    }
+
+  </script>
+</body>
+</html>

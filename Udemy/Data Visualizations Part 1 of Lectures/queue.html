@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Load JSON Data Feed</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script type="text/javascript" src="d3.js"></script>
+</head>
+
+<body>
+
+<div id="chart"></div>
+
+<script type="text/javascript">
+    function render(data) {
+        var bars = d3.select("#chart").selectAll("div.h-bar") // <-B
+                .data(data);
+        bars.enter().append("div") // <-C
+                .attr("class", "h-bar")
+                .style("width", function (d) {
+                    return (d.number) + "px";
+                })
+                .append("span")
+                .text(function (d) {
+                    return d.number;
+                });
+    }
+    function generateDatum(callback) {
+        setInterval(function(){
+            callback(null, {number: Math.ceil(Math.random() * 500)}); // <-D
+        }, 500);
+    }
+    function load() { // <-E
+        var q = d3.queue(); // <-F
+        for (var i = 0; i < 10; i++)
+            q.defer(generateDatum); // <-G
+        q.awaitAll(function (error, data) { // <-H
+            render(data); // <- I
+        });
+    }
+</script>
+
+<div class="control-group">
+    <button onclick="load()">Generate Data Set</button>
+</div>
+
+</body>
+
+</html>
+
+
+<!-- Hi this is the last video of this section asynchronous data loading using q.
+Previously we looked at loading data from a server in this video.
+We will demonstrate a very useful technique commonly used to process or generate data in large data
+visualization projects.
+It is usually necessary in complex visualization project to load and merge multiple data sets from different
+sources before proceeding to visualizing the challenge in this kind of asynchronous loading is the difficulty
+in waiting to know when all data sets have been successfully loaded.
+Since only then the visualization can begin D-3 provides a very convenient queue interface to help organize
+these types of asynchronous tasks and helps you coordinate among them which is the focus of this video
+open local copy of the file in your web browser.
+In the code example of the Q Dot h DML file we will simulate loading and merging multiple data points
+using the set time out function the set time out function executes the given function after a set period
+of delay.
+In our case we set the delay to five hundred milliseconds.
+Now this code generates this output when generate data set button is clicked.
+You can see the data set.
+We have a pretty standard render function that generates horizontal bar visualisation using the standard
+enter update exit pattern shown on Line B and see.
+This pattern by now.
+Should be very familiar to you.
+However the data generation part which is also our focus here is a bit different in this video.
+Unlike D We have a simple random datum generation function called generate datum callback which receives
+a single parameter callback.
+This is a very standard template for a task function and D-3 queue interface as shown in the code snippet
+in this function.
+We use the set interval function to simulate asynchronous data generation with a 500 milliseconds delay.
+Each task function can perform arbitrary logic and calculation in its body.
+For example loading data or computing results asynchronously.
+However once the task is done it has to invoke the callback function to notify the queue that it has
+finished its task and pass back the result as shown on line D.
+The callback function takes two parameters error and result.
+In this case we pass no error signaling says it is completed successfully with the random number in
+second parameter.
+On-Line e.
+We have the load function defined that leverages D-3 Q to execute the tasks.
+Let's take a closer look at the load function D-3 queue can be instantiated using the D-3 dot Q function
+as shown on line f once created it can register any number of tasks using the defer function as shown
+on line g.
+In our case we used a for loop to register 10 asynchronous random datum generation tasks in our queue
+as shown on line g D-3 Q Does not provide multi-threading internally as webwork or offers.
+All tasks are handled synchronously.
+For more information on Web Worker You may visit this link the D-3 doc Q A weight all function shown
+On-Line H is used to wait for all tests to be completed.
+This callback function passed to the await all function will only be invoked once all tasks are completed
+or when an error occurs.
+In our example we have to wait till all the 10 random data points are successfully produced before calling
+the render function to generate the visualization.
+Cool that's all about this video.
+We have learned asynchronous data loading using q.
+Let's sum up what we learned in this section.
+We started off this section with the enter update exit pattern.
+We then learned by adding an array as data binding objects literals is data and binding functions is
+data.
+Later we worked with arrays filter data and sorted data.
+Lastly we loaded data from a server and saw asynchronous data loading using q.
+Awesome.
+So folks that marks the end of this course.
+I hope you had fun learning the basics of D-3 keep coding Ta-Da. -->

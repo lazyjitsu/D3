@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sub-Selection</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script type="text/javascript" src="d3.js"></script>
+</head>
+
+<body>
+
+<section id="section1">
+    <div>
+        <p>blue box</p>
+    </div>
+</section>
+<section id="section2">
+    <div>
+        <p>red box</p>
+    </div>
+</section>
+
+<script type="text/javascript">
+    d3.select("#section1 > div") // <-- A
+            .attr("class", "blue box");
+    d3.select("#section2") // <-- B
+            .style("font-size", "2em") // <-- B-1
+            .select("div") // <-- C
+            .attr("class", "red box");
+</script>
+
+</body>
+</html>
+<!--
+
+<div>
+    <span>
+    Thie quick <em>red</em? fox jumps over the bag
+    </span>
+</div>
+
+div em # not a direct descendant so will NOT produce a valid selection 
+selector > selector
+aka U+003E, > character
+
+span > em
+
+
+This example demonstrates two very different sub selection techniques.
+We will discuss them separately here so you can understand their pros and cons as well as when to use
+one versus the other selector level 3 combinators unlike a D-3 select is used with a special looking string
+which consists of one tag name connected with another one using a greater than sign open bracket (U + 003E) be greater then close bracket.
+
+This syntax is called combinators The greater than sign here indicates it is a child Combinator level
+3 selector supports a few different kinds of structural combinators.
+Here we will give a quick introduction to the most common ones the descendant Combinator.
+This Combinator has the syntax just like selector selector the descendant Combinator as suggested by
+its name is used to describe a loose parent child relationship between two selections.
+The reason why it is called a loose parent child relationship is that the descendant combinatory does
+not care if the second selection is a child or a grandchild or a great grandchild of the parent selection.
+Let's take a look at some examples to illustrate this loose relationship concept.
+If we use this selector
+it will select the E-M elements since d IB is the ancestor of the E-M element and e m as the descendant
+of the development child Combinator.
+This Combinator has the syntax such as selector greater than selector
+the child Combinator offers a more restrictive way to describe a parent child relationship between two
+elements a child Combinator is defined using a greater than sign you plus 0 0 3 be greater than character
+separating the two selectors as this it will select the E-M element.
+Since E-M is a direct child of the span element in our example the selector divi greater than E M will
+not produce any valid selection since M is not a direct child of the DV element.
+The level 3 selector also supports sibling commentator's.
+However since it is less common we will not cover it here.
+You guys can refer to the W3 see Level 3 selector documentation at W3 dot org.
+The W3 sea level for selector offers some interesting additional combinators that is following sibling
+and reference combinators that can yield some very powerful target selection capability at draps dot
+c as SWG Org the D-3 nested sub selection on lines B and C.
+A different kind of sub selection technique was used in this case.
+A simple D-3 selection was made first on line B by selecting the section hash section to Element immediately
+afterward.
+Another select was changed to select a DV element.
+On-Line see this kind of nested selection defines a scoped selection in plain English.
+This basically means to select a DV element that is nested under hash.
+Section 2 in semantics.
+This is essentially the same as using a descendant Combinator hash.
+S. to dvh.
+However the advantage of this form of sub selection is that since the parent element is separately selected
+it allows you to handle the parent element before selecting the child element.
+To demonstrate this let's take a look at this code snippet.
+As shown in the code snippet you can see that before we select the DV element we can apply a modifier
+function to a hash.
+S. to online be one.
+This flexibility will be further explored in the next section.
+Amazing.
+So that's all about this video.
+We've looked at performing sub selection in this video in the next video will see function changing. -->

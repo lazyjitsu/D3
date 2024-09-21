@@ -1,0 +1,31 @@
+<html>
+<head>
+<title> testt </title>
+</head>
+<body>
+<script>
+function Ninja() {
+  this.whoAmI = () => this;
+  this.name="rickson";
+}
+var ninja1 = new Ninja();
+
+var ninja2 = {
+  whoAmI: ninja1.whoAmI
+}
+alert("arrow test");
+alert(ninja1.whoAmI() === ninja1); //true
+alert(ninja2.whoAmI() === ninja1); //true
+alert(ninja2.whoAmI() === ninja2); //false
+alert(ninja1.whoAmI() === ninja2); //false
+var n3 = new Ninja();
+alert("another arrow test");
+alert(n3.whoAmI === ninja1); //false
+alert(n3.name); //
+alert(n3.whoAmI()); //object Object
+alert(n3.whoAmI() === n3); //true
+alert(n3.whoAmI === n3); //false
+
+</script>
+</body>
+</html>

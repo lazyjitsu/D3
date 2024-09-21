@@ -1,0 +1,3 @@
+{
+"ninjas":[ "Marko", "Juju", "Bruce" ]
+}

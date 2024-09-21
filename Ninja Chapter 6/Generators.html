@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  #results li.pass {color: blue;}
+  #results li.fail { color: red; }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 6 Generators</title>
+</head>
+<body>
+  <div id="results"></div>
+
+  <script>
+  function *NinjaGenerator(action) {
+        const imposter = yield("Hattori " + action);
+        assert(imposter === "Hanzo", "The Generator has been infultrated dude!!" );
+        yield ("Yoshi (" + imposter + ") " +action);
+}
+function assert(value,desc) {
+  var li = document.createElement("li");
+  li.className = value ? "pass" : "fail";
+  li.appendChild(document.createTextNode(desc));
+  document.getElementById("results").appendChild(li);
+}
+const  ninjaIterator = NinjaGenerator("Swing");
+const result1 = ninjaIterator.next();
+assert (result1.value === "Hattori Swing", "Rickson is a mother fucking swinging!!!");
+assert (result1.value === "Hattori Swing", result1.value);
+
+  </script>
+</body>
+</html>

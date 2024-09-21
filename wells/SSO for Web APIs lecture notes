@@ -1,0 +1,13 @@
+HTTP STATUS CODES
+401 Unauthorized
+    means Not authenticated!
+
+403 Forbidden
+    means Unauthorized
+
+Single Signon doesn't mean log in once! It means only one system knows your credentials!
+You need to configure other systems to adhere/subscribe to your single sign on system
+
+How do you authenticate?  with user & password typically.
+Sooo how do we transfer these single signon authenticated credentials to other systems?
+Answer: tokens,SAML xml response

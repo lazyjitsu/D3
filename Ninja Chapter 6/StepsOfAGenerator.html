@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  #results li.pass {color: green;}
+  #results li.fail { color: red; }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 6 Generators</title>
+</head>
+<body>
+  <div id="results"></div>
+<script>
+/* function* myGenerator()
+{
+  var x = yield("Rockson");
+}
+var myGeneratorIterator = myGenerator();
+//alert(myGeneratorIterator.next().value);
+var x = myGeneratorIterator.next();
+//myGeneratorIterator.next();
+alert("here: "+x);
+assert("x.value",x.value+" Marco"); */
+function* ninjaGenerator(action) {
+  var x = "marco";
+  const imposter = yield("Hattori " + action);  //
+  console.log(imposter);
+  assert(imposter === "Hanzo", "The gen has been infiltrateed!");
+  yield(x);
+  yield("Yoshi (" + imposter + ")" + action);
+  yield(action);
+//yield "pear";
+//yield "bananna";
+
+}
+const ninjaIterator = ninjaGenerator("Swing");
+console.log(ninjaIterator.next());
+console.log(ninjaIterator.next());
+console.log(ninjaIterator.next("bruce"));
+
+
+
+
+//////////////////
+    function assert(value,desc) {
+      var li = document.createElement("li");
+      li.className = value ? "pass" : "fail";
+      li.appendChild(document.createTextNode(desc));
+      document.getElementById("results").appendChild(li);
+    }
+
+  </script>
+</body>
+</html>

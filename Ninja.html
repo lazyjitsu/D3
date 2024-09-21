@@ -1,0 +1,24 @@
+<html>
+<head>
+  <title>Ninja Training</title>
+</head>
+<body>
+
+<script>
+"use strict";
+  function whatMyCtxt() {
+      return this;
+    }
+    document.write("Heere: "+whatMyCtxt());
+    alert("Direct call" + whatMyCtxt());
+    console.log(whatMyCtxt());
+  var ninja1 = {
+    speak: whatMyCtxt
+  }
+
+
+    alert("Ninja object call: " + ninja1.speak());
+
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+	"name": "d3-project-template",
+	"version": "0.0.1",
+	"keywords": [
+		"data visualization",
+		"d3"
+	],
+	"homepage": "<project home page>",
+	"author": {
+		"name": "<your name>",
+		"url": "<your url>"
+	},
+	"repository": {
+		"type": "git",
+		"url": "<source repo url>"
+	},
+	"dependencies": {
+		"d3": "4.x"
+	}
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>D3 tutorial </title>
+    <script src="d3.js"></script>
+</head>
+
+<body>
+    <script>
+
+    var canvas = d3.select("body")
+                    .append("svg")
+                    .attr("width",700)
+                    .attr("height",700);
+
+    var circle = canvas.append("circle")
+                    .attr("cx",50)
+                    .attr("cy",50)
+                    .attr("r", 25);
+
+    circle.transition()
+            .duration(1500)
+            .attr("cx",150)
+            .on("end",function(d) { // use each for older d3 libraries!!
+                d3.select(this)
+                    .attr("fill","orange")
+            })
+            .transition()
+                .attr("cy",300)
+                .on("start", function(d) {
+                    d3.select(this)
+                        .attr("fill","red")
+                })
+            .transition()
+                .attr("cx",400)
+                .on("end", function(d) {
+                    d3.select(this)
+                        .attr("fill","green")
+                });
+    </script>
+</body>
+</html>

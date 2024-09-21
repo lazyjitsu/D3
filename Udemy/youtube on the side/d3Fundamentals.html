@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="d3.js"></script>
+    <!--
+    <script src="pathSample.js"></script>
+    <script src="begin.js"></script>
+    <script src="svgExample.js"></script>
+    <script src="visualizeOranges.js"></script>
+    <script src="scaling.js"></script>
+    <script src="axis_group.js"></script>
+    <script src="enterExample.js"></script>
+    <script src="transitions.js"></script>
+    <script src="importData.js"></script>
+    <script src="DonutChart.js"></script>
+    <script src="d3jsBarGraph.js"></script> -->
+    <link rel="stylesheet" href="bar.css">
+
+    <script src="BarGraph.js"></script>
+
+<style>
+    svg {
+        border: 1px solid #000;
+    }
+    .arc text {
+        font: 10px Arial, Georgia, sans-serif;
+        text-anchor: middle;
+    }
+
+    .arc path {
+        stroke: #ffffff;
+    }
+    body, html {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    .graph {
+        width: auto;
+    }
+
+    .axis {
+        font: 10px Georgia, Arial, sans-serif;
+    }
+
+    .axis path, .axis line {
+        fill: none;
+        stroke: #dadada;
+        shape-rendering: crispEdges;
+    }
+/* import url("DonutChartStyle.css"); */
+</style>
+</head>
+
+<body>
+    <div class="paths"></div>
+    <div class="orangeContainer"></div>
+    <div class="graphContainer"></div>
+    <div class="transitionsContainer"></div>
+    <div class="importDataContainer"></div>
+    <div class="dontChartContainer"></div>
+    <div class="graph" id="barGraph"></div>
+
+    <script>
+    barGraph();
+        //donutChart();
+        //importData();
+        // enterExamples();
+        //transitions();
+        //start();
+        //paths();
+        //svgSample();
+        // virtualizeOranges();
+        // scaling(); // good for bar charts etc.. we may not use this much but good to train java script & d3.js
+        //axisGroups();
+    </script>
+</body>
+</html>

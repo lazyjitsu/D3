@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  #results li.pass {color: green;}
+  #results li.fail { color: red; }
+  #results li.theCause { color: brown; }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 6 Promises</title>
+</head>
+<body>
+  <div id="results"></div>
+<script>
+//(resolve,reject) => blabhablh is an "executor" function
+report("At code start");
+var ninjaDelayedPromise = new Promise((resolve, reject) => {
+  report("ninjaDelayedPromise executor");
+  setTimeout ( () => {
+    report("Inside setTimeout Resolving ninjaDelayedPromise");
+    resolve("SEM");
+  }, 500);
+});
+assert(ninjaDelayedPromise !== null, "Afer creating ninjaDelayedPromise");
+ninjaDelayedPromise.then(cesar => {
+  assert(cesar === "SEM","ninjaDelayedPromiseresolve handled with SEM!");
+});
+const ninjaImmediatePromise = new Promise(function(resolve, reject) {
+  report("ninjaImmediatePromise executor. Immediate resolve.");
+  resolve("Richard");
+});
+ninjaImmediatePromise.then(ninja => {
+  assert(ninja === "Richard","ninjaImmediatePromise resolved handled with Richard")
+});
+report("At code end");
+
+function assert(value,desc) {
+  var li = document.createElement("li");
+  li.className = value ? "pass" : "fail";
+  li.appendChild(document.createTextNode(desc));
+  document.getElementById("results").appendChild(li);
+}
+function report(desc) {
+    var li = document.createElement("li");
+    li.className = "theCause";
+    li.appendChild(document.createTextNode(desc));
+    document.getElementById("results").appendChild(li);
+}
+</script>
+</body>
+</html>

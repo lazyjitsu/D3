@@ -1,0 +1,92 @@
+<html>
+<head>
+  <title> Ninja Book Chpt 4 </title>
+</head>
+<body>
+  <script>
+
+
+
+    function sum(...rest)
+    {
+      var sum = 0;
+        for (var i = 0; i < rest.length; i++)
+        {
+          sum += rest[i];
+        }
+        return sum;
+    }
+    alert(sum(3,4));
+
+    function getSamurai(samurai) {
+        "use strict"
+        arguments[0] = "Ishida";
+        return samurai;
+      }
+    function getNinja(ninja) {
+        arguments[0] = "Fuma";
+        return ninja;
+    }
+
+
+var samurai = getSamurai("Toytomi");
+var ninja = getNinja("Yoshi");
+alert(samurai+" : " +ninja);
+//Q3: When running the following, which will pass the assertion functin or true/false test
+function whoAMi1() {
+  "use strict";
+  return this;
+}
+function whoAMi2() {
+  return this;
+}
+
+//alert(whoAMi1());
+//alert(whoAMi2());
+//Q4: When running the following code, whic of the assertions will pass?
+
+var ninja1 = {
+  whoAMi: function() {
+    return this;
+  }
+};
+var ninja2 = {
+  whoAMi: ninja1.whoAMi
+};
+alert("Marco ninja1 test coming");
+alert(ninja1.whoAMi()===ninja1); //true
+alert("Marco ninja 2 test coming");
+alert(ninja2.whoAMi()===ninja1); //false
+alert(ninja2.whoAMi===ninja1);
+alert("done base ninja tests");
+//alert("Q4: "+ninja2.whoAMi());
+function Ninja() {
+  this.whoAMi = () => this;
+}
+
+var ninja1 = new Ninja();
+var n2 = new Ninja();
+alert("here comes ninja1 === ninja1 test");
+alert(ninja1.whoAMi() === ninja1); //true
+alert("here comes ninja2 === ninja2 test");
+//ninja2.whoAMi.ninja1.whoAMi: function return this;
+alert(ninja2.whoAMi() === ninja2); //true
+alert("And time...");
+alert(n2.whoAMi() === ninja2);
+//Q5: which passes
+function NNinja() {
+  this.whoAmI = () => this;
+}
+var ninja1 = new NNinja();
+alert("arrow test");
+var ninja2 = {
+  whoAmI: ninja1.whoAmI
+}
+alert(ninja1.whoAmI() === ninja1); //true
+alert(ninja2.whoAmI() === ninja2);
+
+
+
+  </script>
+  </body>
+</html>

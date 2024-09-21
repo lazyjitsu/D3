@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Raw Selection</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script type="text/javascript" src="d3.js"></script>
+</head>
+
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Time</th>
+        <th>Type</th>
+        <th>Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>10:22</td>
+        <td>Purchase</td>
+        <td>$10.00</td>
+    </tr>
+    <tr>
+        <td>12:12</td>
+        <td>Purchase</td>
+        <td>$12.50</td>
+    </tr>
+    <tr>
+        <td>14:11</td>
+        <td>Expense</td>
+        <td>$9.70</td>
+    </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    var trSelection = d3.selectAll("tr"); // <-- A
+    console.log(d3.selectAll("tr").nodes()[0]);
+    var headerElement = trSelection.nodes()[0]; // <-- B
+    console.log("headerElement is an instance of DOM Element: "
+        + (headerElement instanceof Element));
+    d3.select(headerElement).attr("class", "table-header"); // <-- C
+    console.log("d3.select(headerElement) is an instanceof of d3.selection: "
+        + (d3.select(headerElement) instanceof d3.selection));
+    var rows = trSelection.nodes();
+    d3.select(rows[1]).attr("class", "table-row-odd"); // <-- D
+    d3.select(rows[2]).attr("class", "table-row-even"); // <-- E
+    d3.select(rows[3]).attr("class", "table-row-odd"); // <-- F
+</script>
+
+</body>
+</html>
+<!--
+We will see how to get access to raw deal DOMA elements and we'll also take a look at internal structure
+of a D-3 Selection object.
+Open your local copy of the file in your web browser.
+Of course you can achieve this using the EMF child selector or the selection iterator function each
+but there are cases where these options are just too cumbersome and inconvenient.
+This is when you might find dealing with the raw selection array a more convenient approach.
+In this example we'll see how the raw selection array could be accessed and leveraged
+this code generates a tabular visual output like this.
+In this example we went through an existing HVM l table to color the table.
+This is not intended to be a good example of how you would color odd versus even rows in a table using
+D-3 instead.
+This example is designed to show how raw selection array can be accessed
+online.
+A We select all rows and store the selection in the selection variable D-3 selection has a convenient
+Noad function that returns an array containing the selected element nodes.
+Thus in order to access the first selected element you will need to use D-3 dot select all dot nodes.
+Open bracket zero close bracket.
+The second element can be accessed with D-3 dot select all nodes 1 and so on as we can see on Line B.
+The table header element can be accessed using TR selection.
+Nodes.
+Open bracket 0 close bracket and this will return a DRM element object.
+Again as we've demonstrated in previous sections any DOMA element can then be selected directly using
+D-3 select as shown inline See Line D E and F..
+Demonstrate how each element in selection can be directly indexed and accessed.
+Raw selection access could be handy in some cases especially when you need to use D-3 in partnership
+with other javascript libraries since other libraries won't be able to work with D-3 selection but only
+with raw deal m elements.
+What's that CTX dot response dot location line for.
+Splendid.
+That brings us to the end of this section.
+In this video we learned manipulating raw selection summing up the section.
+We started off with introducing selection selecting single element and multiple elements.
+Then we iterate it through a selection and performed some selection.
+Later we saw a function changing and manipulated raw selection in the next section we'll see.
+Dealing with data. -->

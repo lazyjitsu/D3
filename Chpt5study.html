@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title> chapter 5 study </title>
+</head>
+<body>
+<div id="box">First Box</div>
+  <script>
+
+
+    function animateIt(elementId) {
+
+      var elem = document.getElementById(elementId);
+      alert(elem.elementId);
+      var tick = 0;
+      var timer = setInterval(function() {
+        if (tick < 100) {
+        //elem.style.right = elem.style.top = tick + "px";
+      //  document.getElementById(elementId).style.left = "100px";
+        elem.style.height = "180px";
+    //
+          tick++;
+        }
+        else {
+          clearInterval(timer);
+        }
+      },10); //end setInterval
+    } //end animateIt
+animateIt("box");
+  </script>
+</body>
+</html>

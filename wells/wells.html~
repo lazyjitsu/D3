@@ -1,0 +1,10 @@
+<html>
+	<head>
+		<title>D3 training</title>
+		<script src="d3Training.js"></script>
+	</head>
+<body>
+	<h1> Some d3 training</h1>
+<script>svgExample()</script>
+</body>
+</html>

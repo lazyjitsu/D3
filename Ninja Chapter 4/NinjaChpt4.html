@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Ninja Chapter 4</title>
+  </head>
+
+  <body>
+    <button id="test">Click my ass</button>
+    <script>
+      function Button() {
+          this.clicked = false;
+          this.click = function() {
+            this.clicked = true;
+            if (this.clicked) {
+              alert("You can expand a node or extract data from within this anon function");
+              assert(this.clicked,"Did NOT FAIL!");
+            }
+          };
+      }
+      var button = new Button();
+      //target the element
+      var elem = document.getElementById("test");
+      //associate an event with our html element!
+      elem.addEventListener("click", button.click());
+    </script>
+  </body>
+</html>

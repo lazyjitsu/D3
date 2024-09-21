@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  #results li.pass {color: green;}
+  #results li.fail { color: red; }
+  #results li.theCause { color: brown; }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 6 Promises</title>
+</head>
+<body>
+  <div id="results"></div>
+<script>
+//(resolve,reject) => blabhablh is an "executor" function
+const promise = new Promise((resolve, reject) => {
+  reject("Explicitly reject a promise like this!")
+});
+promise.then(() => fail("happy path, won't be called!"))
+//Alternatively, we can do:
+//promise.then(() => fail("happy path, won't be called!")).catch(() => pass("promise was also rejected");
+
+
+function assert(value,desc) {
+  var li = document.createElement("li");
+  li.className = value ? "pass" : "fail";
+  li.appendChild(document.createTextNode(desc));
+  document.getElementById("results").appendChild(li);
+}
+function report(desc) {
+    var li = document.createElement("li");
+    li.className = "theCause";
+    li.appendChild(document.createTextNode(desc));
+    document.getElementById("results").appendChild(li);
+}
+</script>
+</body>
+</html>

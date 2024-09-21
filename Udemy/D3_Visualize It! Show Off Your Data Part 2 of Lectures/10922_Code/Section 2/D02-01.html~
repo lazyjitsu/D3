@@ -1,0 +1,39 @@
+<html>
+<head>
+    <script src="d3.js"></script>
+    <script src="d3-scale-chromatic.v1.min.js"></script>
+    <script src="../libs/lodash.js"></script>
+    <link rel="stylesheet" href="../css/default.css">
+
+    <script src="./js/D02-01.js"></script>
+    <link rel="stylesheet" href="./css/D02-01.css" type="text/css">
+</head>
+<body>
+
+<div>
+	<h3> Accumaltive Errors Call Count by LOB</h3>	
+    <span>
+        Select group:
+    </span>
+    <select>
+        <option value="All" selected>All</option>
+        <option value="CEO">CEO</option>
+        <option value="Internal">Internal</option>
+        <option value="External">External</option>
+        <option value="WCA">WCA</option>
+    </select>
+</div>
+
+<div id="output">
+    <svg class="chart"></svg>
+</div>
+
+<script>
+    (function() {
+        show();
+    })();
+</script>
+
+
+</body>
+</html>

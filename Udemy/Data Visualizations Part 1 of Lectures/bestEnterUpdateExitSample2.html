@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Using Manual Shapes to prove and teach EnterUpdateExit Patterns</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script type="text/javascript" src="d3.js"></script>
+</head>
+
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+
+<script type="text/javascript">
+var myData = [33,];
+<!-- var myData = [33,11];  enable and see which color/atttributes are attached to data(myData) vs. enter()  -->
+console.log(myData);
+svg = d3.select("body").append("svg").attr("height","800").attr("width","100%");
+
+<!-- previously we selected all circles when we had none which creates an empty selection of elements/circles.Lets create a circule manually to pair with our one data point, '33',  -->
+
+var myManualCircle = svg.append("circle") <!-- append circle which has no data association as we did it manually and not bound/associated with data -->
+                        .attr("cx","50")
+                        .attr("cy","50")
+                        .attr("r","25");
+
+var circle = svg.selectAll("circle") <!-- We now find one circle that we built manually!  -->
+                .data(myData) <!-- the data is now bound to one pre-existing circle. this is the case of DOM elements = data; hence update condition -->
+                .attr("fill","green") <!-- this is the update selection -->
+                .enter().append("circle") <!-- this contains all data elements that have not been bound to existing circles. as stated above, we have no circles -->
+                    .attr("cx",150)
+                    .attr("cy",150)
+                    .attr("r",30)
+                    .attr("fill","blue");
+
+</script>
+
+</body>
+</html>

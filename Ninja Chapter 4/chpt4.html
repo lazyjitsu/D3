@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title> Ninja Book Chpt 4 </title>
+</head>
+<body>
+  <script>
+    function sum(...rest)
+    {
+      var sum = 0;
+        for (var i = 0; i < rest.length; i++)
+        {
+          sum += rest[i];
+        }
+        return sum;
+    }
+    alert(sum(3,4));
+      alert(sum(29,100));
+  </script>
+</html>

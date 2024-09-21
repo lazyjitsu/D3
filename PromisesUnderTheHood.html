@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise Internals</title>
+  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+  //A promise is a property on a deffered object which contains a property called, 'promise.'
+  //Now the promise and deffered objects are two seperate javascript objects. As two seperate objects, you can operate on ea. of them independently.
+  //Note you can always get to the Promise
+  //object from the deferred object by accessing deferred.promise
+  //By default, when you first create a promise you have two properties:
+  //status which is equsl to pending and value which is undefined by default
+  //lets look around....
+  var deferred = Promise.defer();
+  document.writeln(deferred); //prints undefined
+  console.log(deferred); //prints Object {promise: Promise}
+  var promise = deferred.promise;
+  console.log(promise); //prints Promise {[[ProomiseSttatus]]: "pending", [[PromiseValoue]]: undefined)}
+//just to reiterate, that promise object is exactly the same as --- the property,promise on the deferred object!!
+//IOW: promise === deferred.Promise
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>

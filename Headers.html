@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <title> Learn howto Headers </title>
+    <script>
+    var client = new XMLHttpRequest();
+client.open("GET", "http://192.168.1.207", true);
+client.send();
+client.onreadystatechange = function() {
+  if(this.readyState == this.HEADERS_RECEIVED) {
+    console.log(client.getResponseHeader("Content-Type"));
+    console.log(client.getResponseHeader("*"));
+    console.log("Marco: " +this.HEADERS_RECEIVED);
+  }
+}
+    </script>
+  </head>
+  <body>
+<p>test</p>
+    <p> hello header </p>
+
+
+  </body>
+</html>

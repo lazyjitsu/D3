@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Using Manual Shapes to prove and teach EnterUpdateExit Patterns</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script type="text/javascript" src="d3.js"></script>
+</head>
+
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+
+<script type="text/javascript">
+var myData = [33];
+console.log(myData);
+svg = d3.select("body").append("svg").attr("height","100%").attr("width","100%");
+
+
+var circle = svg.selectAll("circle") <!-- Select every circle that does not quite exist and create our empty selection of circles -->
+                .data(myData) <!-- bind this empty selection from above to our data. Recall we have no circles as of yet and thus we have an empty selection of elemnts, circles in this case.  -->
+                .enter()    <!-- enter() contains all data elements that have not been bound to existing circles. So enter() has just '33' -->
+                .append("circle") <!--Now run append for every datapoint and create a circle. Since we have just 1 data point,'33', this creates 1 circle in this case-->                             one circle!! -->
+                    .attr("cx","50")
+                    .attr("cy","50")
+                    .attr("r","25");
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  #results li.pass {color: green;}
+  #results li.fail { color: red; }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 6 Generators</title>
+</head>
+<body>
+  <div id="results"></div>
+<script>
+
+function* ninjaGenerator(action) {
+  var x = yield("not yet x");
+  var a = yield("not yet a proving i have the data sent to X -->  " + x);
+}
+
+var iterator = ninjaGenerator();
+console.log(iterator.next()); // prints 'not yet x' & pauses before assing undef or value to 'x'
+console.log(iterator.next("Hello X, I'm now being assigned to you")); // prints x which is undefined
+console.log(iterator.next()); //prints 'a' as the 2nd yield/pause has already been executed
+
+
+
+    function assert(value,desc) {
+      var li = document.createElement("li");
+      li.className = value ? "pass" : "fail";
+      li.appendChild(document.createTextNode(desc));
+      document.getElementById("results").appendChild(li);
+    }
+
+  </script>
+</body>
+</html>

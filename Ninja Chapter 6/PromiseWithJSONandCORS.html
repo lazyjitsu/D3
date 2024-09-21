@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple use of Cross-Site XMLHttpRequest (Using Access Control)</title>
+    <script type="text/javascript">
+    //<![CDATA[
+
+    var invocation = new XMLHttpRequest();
+    var url = 'http://192.168.1.207/MarkoJSONdata.json';
+    var invocationHistoryText;
+    var header = new Headers();
+    header.append('Access-Control-Allow','*');
+    function callOtherDomain(){
+        if(invocation)
+        {
+
+            //XMLHttpRequest.setRequestHeader(header, value)
+            //response.setHeader("Access-Control-Allow-Origin", "*");
+            invocation.open('GET', url, true);
+            invocation.onreadystatechange = handler
+            // invocation.setRequestHeader("Access-Control-Allow-Credentials", "true");
+            // invocation.setRequestHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+            //invocation.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+          //  invocation.setRequestHeader('Access-Control-Allow-Headers', '*');
+          //invocation.setRequestHeader('Access-Control-Allow-Origin', '*');
+            invocation.send();
+            var headers = XMLHttpRequest.getAllResponseHeaders();
+            alert(headers);
+        }
+        else
+        {
+            invocationHistoryText = "No Invocation TookPlace At All";
+            var textNode = document.createTextNode(invocationHistoryText);
+            var textDiv = document.getElementById("textDiv");
+            textDiv.appendChild(textNode);
+        }
+
+    }
+    function handler(evtXHR)
+    {
+        if (invocation.readyState == 4)
+        {
+                if (invocation.status == 200)
+                {
+                    var response = invocation.responseXML;
+
+                    var invocationHistory = response.getElementsByTagName('invocationHistory').item(0).firstChild.data;
+                    invocationHistoryText = document.createTextNode(invocationHistory);
+                    var textDiv = document.getElementById("textDiv");
+                    textDiv.appendChild(JSON.parse(response));
+
+                }
+                else
+                    alert("Invocation Errors Occured");
+        }
+        else
+            alert("else invoked: " + invocation.readyState);
+    }
+    //]]>
+
+
+    </script>
+</head>
+<body>
+    <form id="controlsToInvoke" action="">
+        <p>
+        <input type="button" value="Click to Invoke Another Site" onclick="callOtherDomain()" />
+        </p>
+        </form>
+    <p id="intro">
+    This page basically makes invocations to another domain using cross-site XMLHttpRequest mitigated by Access Control.  This is the simple scenario that is <em>NOT</em> preflighted, and the invocation to a resource on another domain takes place using a simple HTTP GET.
+    </p>
+    <div id="textDiv">
+        This XHTML document invokes another resource using cross-site XHR.
+    </div>
+
+
+</script>
+</body>
+</html>

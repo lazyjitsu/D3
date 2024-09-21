@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Selection Iteration</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script type="text/javascript" src="d3.js"></script>
+</head>
+
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+
+<script type="text/javascript">
+    d3.selectAll("div") // <-- A
+            .attr("class", "red box") // <-- B
+            .each(function (d, i) { // <-- C
+                d3.select(this).append("h1").text(i); // <-- D
+            });
+</script>
+
+</body>
+</html>
+
+<!--
+selection.each(function)
+selection.append(tagName)
+
+select each the each function takes an iterator function as its parameter.
+The given iterator function can receive two optional parameters D and I with one more hidden parameter
+passed in as the this reference which points to the current DRM element object.
+The second parameter is the index number for the current element object being iterated through.
+This index is zero based meaning it starts from 0 and increments each time a new element is encountered.
+Selection.
+Append.
+Tag name another new function introduced in this example is the append function.
+This function creates a new element with the given element name and appends it as the last child of
+each element in the current selection.
+It returns a new selection containing the newly appended element. -->
